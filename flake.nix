@@ -22,10 +22,12 @@
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, darwin, ... }:
     let
+      # XPS 15 9520
       machine-1 = {
         hostname = "hz";
         username = "jm";
       };
+      # MacBook Air (M2)
       machine-2 = {
         hostname = "heeji";
         username = "jungmin";
@@ -33,18 +35,23 @@
       stateVersion = "22.11";
     in
     {
-      nixosConfigurations.${machine-1.hostname} = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.${machine-1.hostname} = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; inherit machine-1; };
         modules = [
-          ({ ... }: {
-            nixpkgs.config = {
-              allowUnfree = true;
+          ./machines/hz
+          ({ pkgs, ... }: {
+            nixpkgs.config.allowUnfree = true;
+            system.stateVersion = stateVersion;
+            # Don't forget to set a password with ‘passwd’.
+            users.users.${machine-1.username} = {
+              extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
+              isNormalUser = true;
+              shell = pkgs.fish;
             };
           })
           inputs.hyprland.nixosModules.default
           { programs.hyprland.enable = true; }
-          ./hz-jm.nix
           home-manager.nixosModule
           {
             home-manager = {
@@ -52,9 +59,7 @@
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.${machine-1.username} = { ... }: {
-                imports = [
-                  ./home.nix
-                ];
+                imports = [ ./machines/hz/jm.nix ];
                 home = {
                   username = machine-1.username;
                   homeDirectory = "/home/${machine-1.username}";
@@ -67,27 +72,5 @@
           }
         ];
       };
-
-      # homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-      #   pkgs = import nixpkgs {
-      #     system = "x86_64-linux";
-      #     config = {
-      #       allowUnfree = true;
-      #     };
-      #   };
-      #   extraSpecialArgs = { inherit inputs; };
-      #   modules = [
-      #     ({ ... }: {
-      #       home = {
-      #         stateVersion = stateVersion;
-      #         username = username;
-      #         homeDirectory = "/home/${username}";
-      #       };
-      #       programs.home-manager.enable = true;
-      #       targets.genericLinux.enable = true;
-      #     })
-      #     ./home.nix
-      #   ];
-      # };
     };
 }
