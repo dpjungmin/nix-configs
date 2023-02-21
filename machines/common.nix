@@ -15,7 +15,6 @@ in
     binutils
     coreutils
     inetutils
-    # gcc
     gnumake
     cmake
     clang-tools

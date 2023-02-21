@@ -68,6 +68,7 @@ in
     google-chrome
     dunst
 
+    gcc
     mako
     pipewire
     wireplumber
