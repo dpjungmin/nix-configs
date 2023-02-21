@@ -8,5 +8,12 @@ stdenv.mkDerivation {
     gcc
     openssl
     zlib
+    cairomm
+    atkmm
+    pango
+    gdk-pixbuf
+    gdk-pixbuf-xlib
+    webkitgtk
+    gtk-layer-shell
   ];
 }
