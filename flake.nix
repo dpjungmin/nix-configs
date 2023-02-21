@@ -38,6 +38,7 @@
         username = "heeji";
       };
       nixpkgsConfig = {
+        allowBroken = true;
         allowUnfree = true;
         allowUnsupportedSystem = false;
       };
@@ -48,7 +49,6 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs machine-1; };
         modules = [
-          ./machines/hz
           ({ pkgs, ... }: {
             nixpkgs.config = nixpkgsConfig;
             system.stateVersion = stateVersion;
@@ -58,6 +58,7 @@
               shell = pkgs.fish;
             };
           })
+          ./machines/hz
           inputs.hyprland.nixosModules.default
           { programs.hyprland.enable = true; }
           home-manager.nixosModule
@@ -83,7 +84,6 @@
         system = "aarch64-darwin";
         specialArgs = { inherit inputs machine-2; };
         modules = [
-          ./machines/heeji
           ({ pkgs, ... }: {
             nixpkgs.config = nixpkgsConfig;
             system.stateVersion = 4;
@@ -92,6 +92,7 @@
               shell = pkgs.fish;
             };
           })
+          ./machines/heeji
           home-manager.darwinModule
           {
             home-manager = {
