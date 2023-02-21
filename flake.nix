@@ -2,7 +2,7 @@
   description = "My configurations!";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -12,7 +12,7 @@
 
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
@@ -27,23 +27,31 @@
         hostname = "hz";
         username = "jm";
       };
-      # MacBook Air (M2)
+      # MacBook Air
       machine-2 = {
         hostname = "heeji";
         username = "jungmin";
+      };
+      # MacBook Pro
+      machine-3 = {
+        hostname = "jungmin";
+        username = "heeji";
+      };
+      nixpkgsConfig = {
+        allowUnfree = true;
+        allowUnsupportedSystem = false;
       };
       stateVersion = "22.11";
     in
     {
       nixosConfigurations.${machine-1.hostname} = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; inherit machine-1; };
+        specialArgs = { inherit inputs machine-1; };
         modules = [
           ./machines/hz
           ({ pkgs, ... }: {
-            nixpkgs.config.allowUnfree = true;
+            nixpkgs.config = nixpkgsConfig;
             system.stateVersion = stateVersion;
-            # Don't forget to set a password with ‘passwd’.
             users.users.${machine-1.username} = {
               extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
               isNormalUser = true;
@@ -65,8 +73,37 @@
                   homeDirectory = "/home/${machine-1.username}";
                   stateVersion = stateVersion;
                 };
-                programs.home-manager.enable = true;
-                targets.genericLinux.enable = true;
+              };
+            };
+          }
+        ];
+      };
+
+      darwinConfigurations.${machine-2.hostname} = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs machine-2; };
+        modules = [
+          ./machines/heeji
+          ({ pkgs, ... }: {
+            nixpkgs.config = nixpkgsConfig;
+            system.stateVersion = 4;
+            users.users.${machine-2.username} = {
+              home = "/Users/${machine-2.username}";
+              shell = pkgs.fish;
+            };
+          })
+          home-manager.darwinModule
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.${machine-2.username} = { ... }: {
+                imports = [ ./machines/heeji/jungmin.nix ];
+                home = {
+                  username = machine-2.username;
+                  stateVersion = stateVersion;
+                };
               };
             };
           }

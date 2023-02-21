@@ -120,14 +120,11 @@ in
       options = "--delete-older-than 7d";
     };
     package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    settings = {
+      allowed-users = [ username ];
+      experimental-features = [ "nix-command" "flakes" ];
+    };
   };
-
-  nix.settings.allowed-users = [
-    username
-  ];
 
   programs.light.enable = true;
 
