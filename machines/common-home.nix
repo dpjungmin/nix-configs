@@ -8,13 +8,16 @@ in
     helix
     tree-sitter
     gtest
-    clang-tools
     rustup
     nodejs
     nodePackages.typescript
     python311
     emscripten
     jdk
+    lua
+    luajitPackages.fennel
+    universal-ctags
+    bear
 
     # language-servers
     sumneko-lua-language-server
@@ -29,10 +32,9 @@ in
     nodePackages_latest.prettier
     google-java-format
     nixpkgs-fmt
+    black
 
     # apps
-    # firefox-devedition-bin
-    # thunderbird
     obsidian
     slack
     discord
@@ -48,16 +50,14 @@ in
     fortune
     htop
     btop
-    # dolphin
-    # wofi
-    # hyprpaper
     cmatrix
     asciiquarium
     lolcat
     chezmoi
-    # eww-wayland
     jq
+    gh
     delta
+    hyperfine
     fzf
     zoxide
     wget
@@ -66,17 +66,16 @@ in
     cargo-generate
     cargo-geiger
     cargo-watch
-    # grim
-    # slurp
+    cargo-expand
     yarn
     difftastic
     file
-    # ltrace
-    # strace
     unzip
     broot
     just
     wabt
+    onefetch
+    fping
 
     # miscellaneous
     python310Packages.pynvim

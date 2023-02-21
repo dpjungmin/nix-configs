@@ -15,24 +15,6 @@ in
   programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
-    wezterm
-    fish
-    vim
-    neovim
-    git
-    git-lfs
-
-    gcc
-    gnumake
-    cmake
-    ninja
-    pkg-config
-    libelf
-    flex
-    bison
-    bc
-    chromedriver
-    geckodriver
   ];
 
   nix = {

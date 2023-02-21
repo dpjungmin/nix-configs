@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, nixpkgs, inputs, machine-1, ... }:
 
 let
@@ -67,35 +63,15 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wezterm
-    fish
-    vim
-    neovim
-    git
-    git-lfs
-
-    gcc
-    gnumake
-    cmake
-    ninja
+    firefox
+    google-chrome
     dunst
+
     mako
     pipewire
     wireplumber
-    pkg-config
-    libelf
     elfutils
-    flex
-    bison
-    bc
-    chromedriver
-    geckodriver
-
-    firefox
-    google-chrome
   ];
 
   environment.shells = with pkgs; [ fish ];

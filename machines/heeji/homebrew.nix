@@ -15,11 +15,11 @@ in
       "amethyst"
       "font-lekton-nerd-font"
       "wez/wezterm/wezterm-nightly"
-      "docker"
+      # "docker"
       "zoom"
       "microsoft-teams"
-      "firefox"
-      "google-chrome"
+      # "firefox"
+      # "google-chrome"
       "chromium"
     ];
     taps = [
