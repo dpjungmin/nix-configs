@@ -25,6 +25,7 @@ in
     nodePackages_latest.vim-language-server
     nodePackages_latest.bash-language-server
     nodePackages.typescript-language-server
+    nodePackages_latest.pyright
 
     # formatters
     rust-analyzer
