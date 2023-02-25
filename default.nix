@@ -15,5 +15,6 @@ stdenv.mkDerivation {
     gdk-pixbuf-xlib
     webkitgtk
     gtk-layer-shell
+    libctl
   ];
 }

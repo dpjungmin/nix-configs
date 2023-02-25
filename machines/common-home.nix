@@ -18,6 +18,8 @@ in
     luajitPackages.fennel
     universal-ctags
     bear
+    gdb
+    lldb
 
     # language-servers
     sumneko-lua-language-server
