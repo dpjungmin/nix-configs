@@ -23,6 +23,7 @@ in
 
     # language-servers
     sumneko-lua-language-server
+    cmake-language-server
     python310Packages.python-lsp-server
     nodePackages_latest.vim-language-server
     nodePackages_latest.bash-language-server
