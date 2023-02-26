@@ -80,6 +80,7 @@ in
     wabt
     onefetch
     fping
+    graphviz
 
     # miscellaneous
     python310Packages.pynvim
