@@ -80,6 +80,7 @@ in
     onefetch
     fping
     graphviz
+    slides
 
     # miscellaneous
     python310Packages.pynvim
