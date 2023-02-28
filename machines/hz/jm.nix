@@ -20,6 +20,7 @@ in
     slurp
     ltrace
     strace
+    gdb
   ];
 
   services.dropbox = {
