@@ -76,7 +76,6 @@ in
     unzip
     broot
     just
-    wabt
     onefetch
     fping
     graphviz
