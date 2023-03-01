@@ -79,6 +79,8 @@ in
     onefetch
     fping
     graphviz
+    slides
+    graph-easy
 
     # miscellaneous
     python310Packages.pynvim
