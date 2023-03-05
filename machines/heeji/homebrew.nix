@@ -10,6 +10,7 @@ in
       autoUpdate = true;
     };
     brews = [
+      "erdtree"
     ];
     casks = [
       "amethyst"
@@ -31,6 +32,7 @@ in
       "homebrew/services"
 
       "wez/wezterm"
+      "solidiquis/tap"
     ];
   };
 }
