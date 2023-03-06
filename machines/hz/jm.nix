@@ -21,6 +21,7 @@ in
     ltrace
     strace
     gdb
+    wl-clipboard
   ];
 
   services.dropbox = {
