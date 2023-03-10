@@ -7,6 +7,8 @@ in
   imports = [ ../common-home.nix ];
 
   home.packages = with pkgs; [
+    clang
+
     # apps
     firefox-devedition-bin
     thunderbird
