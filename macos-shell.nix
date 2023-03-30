@@ -9,5 +9,6 @@ stdenv.mkDerivation {
     openssl
     zlib
     gtk4
+    libadwaita
   ];
 }
