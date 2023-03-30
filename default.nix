@@ -8,6 +8,7 @@ stdenv.mkDerivation {
     gcc
     openssl
     zlib
+    gtk4
     cairomm
     atkmm
     pango
