@@ -30,7 +30,6 @@ in
     nodePackages_latest.pyright
 
     # formatters
-    rust-analyzer
     stylua
     nodePackages_latest.prettier
     google-java-format
