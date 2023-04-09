@@ -32,11 +32,6 @@
         hostname = "heeji";
         username = "jungmin";
       };
-      # MacBook Pro
-      machine-3 = {
-        hostname = "jungmin";
-        username = "heeji";
-      };
       nixpkgsConfig = {
         allowBroken = true;
         allowUnfree = true;
