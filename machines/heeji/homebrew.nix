@@ -11,6 +11,16 @@ in
     };
     brews = [
       "erdtree"
+      "gawk"
+      "gnu-sed"
+      "gmp"
+      "mpfr"
+      "libmpc"
+      "isl"
+      "zlib"
+      "expat"
+      "texinfo"
+      "flock"
     ];
     casks = [
       "amethyst"
