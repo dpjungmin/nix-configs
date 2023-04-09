@@ -48,7 +48,7 @@
             nixpkgs.config = nixpkgsConfig;
             system.stateVersion = stateVersion;
             users.users.${machine-1.username} = {
-              extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
+              extraGroups = [ "networkmanager" "wheel" "video" "docker" "plugdev" ];
               isNormalUser = true;
               shell = pkgs.fish;
             };
