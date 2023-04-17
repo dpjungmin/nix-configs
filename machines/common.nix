@@ -9,8 +9,10 @@ in
     fish
     vim
     neovim
+    vscode
     git
     git-lfs
+    llvm
 
     binutils
     coreutils
