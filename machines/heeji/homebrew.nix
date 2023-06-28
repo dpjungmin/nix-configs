@@ -21,16 +21,16 @@ in
       "expat"
       "texinfo"
       "flock"
+      "pkg-config"
+      "gtk4"
+      "libadwaita"
     ];
     casks = [
       "amethyst"
       "font-lekton-nerd-font"
-      "wez/wezterm/wezterm-nightly"
-      # "docker"
+      "wezterm-nightly"
       "zoom"
       "microsoft-teams"
-      # "firefox"
-      # "google-chrome"
       "chromium"
     ];
     taps = [
@@ -40,8 +40,8 @@ in
       "homebrew/cask-fonts"
       "homebrew/core"
       "homebrew/services"
+      "homebrew/cask-versions"
 
-      "wez/wezterm"
       "solidiquis/tap"
     ];
   };

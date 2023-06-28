@@ -5,7 +5,6 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    wezterm
     fish
     vim
     neovim
